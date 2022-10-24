@@ -262,6 +262,9 @@ export const runAll = async (tests: Array<Test>, cwd: string): Promise<void> => 
   if (hasPoints) {
     const text = `Points ${points}/${availablePoints}`
     log(color.bold.bgCyan.black(text))
+    const nwo = process.env['GITHUB_REPOSITORY'] || '/'
+    const [owner, repo] = nwo.split('/')
+    log(owner)
     core.setOutput('Points', `${points}/${availablePoints}`)
     await setCheckRunOutput(text)
   }
